@@ -7,15 +7,10 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-Route::get('/dbconn', function(){
-return view('dbconn');
+Route::get('/dbconn', function () {
+    return view('dbconn');
 });
 
 Route::get('/books', [BookController::class, 'index']);
-
-
-Route::get('/books/upload', function () {
-    return view('books.upload');
-});
-
- Route::get('/books/{name}', [BookController::class, 'show']);
+Route::get('/books/upload', [BookController::class, 'create']);
+Route::get('/books/{name}', [BookController::class, 'show']);

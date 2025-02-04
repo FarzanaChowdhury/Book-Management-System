@@ -8,16 +8,41 @@ use App\Models\Book;
 class BookController extends Controller
 {
     public function index() {
-      // route --> /ninjas/
       // fetch all records & pass into the index view
 
-      $books = Book::orderBy('created_at', 'desc')->get();
+      $books = Book::orderBy('created_at', 'desc')->paginate(6);
 
       return view('books.index', ["books" => $books]);
     }
 
+
+    // public function index(Request $request) {
+    //     // Get all unique authors and categories for dropdown
+    //     $authors = Book::pluck('author')->unique();
+    //     $categories = Book::pluck('category')->unique();
+    
+    //     // Start query
+    //     $query = Book::query();
+    
+    //     // Apply filters if selected
+    //     if ($request->has('author') && $request->author) {
+    //         $query->where('author', $request->author);
+    //     }
+    
+    //     if ($request->has('category') && $request->category) {
+    //         $query->where('category', $request->category);
+    //     }
+    
+    //     // Fetch filtered books
+    //     $books = $query->orderBy('created_at', 'desc')->get();
+    
+    //     return view('books.index', compact('books', 'authors', 'categories'));
+    // }
+    
+
+
+
     public function show($name) {
-      // route --> /ninjas/{id}
       // fetch a single record & pass into show view
 
       // Find the book by name
@@ -33,17 +58,19 @@ class BookController extends Controller
     }
 
     public function create() {
-      // route --> /ninjas/create
       // render a create view (with web form) to users
+     
+      return view(('books.upload'));
     }
 
+
+
+    
     public function store() {
-      // --> /ninjas/ (POST)
       // hanlde POST request to store a new ninja record in table
     }
 
     public function destroy($id) {
-      // --> /ninjas/{id} (DELETE)
       // handle delete request to delete a ninja record from table
     }
 
