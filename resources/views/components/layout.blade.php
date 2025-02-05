@@ -22,7 +22,7 @@
 
   <main class="container">
     {{ $slot }}
-  </main>
+</main>
 </body>
 </html> --}}
 
@@ -46,18 +46,26 @@
 
             </div>
         </nav> --}}
-<div class="container d-flex justify-content-between">
-<h1>Book Management</h1>
-<ul class="nav justify-content-end">
-  <li class="nav-item">
-    <a class="nav-link active" href="/books">All Books</a>
-  </li>
-  <li class="nav-item">
-    <a class="nav-link" href="/books/upload">Upload New Book</a>
-  </li>
+        <div class="container d-flex justify-content-between">
+            <h1>Book Management</h1>
+            <ul class="nav justify-content-end">
+                <li class="nav-item">
+                    <a class="nav-link active" href="/books">All Books</a>
+                </li>
 
-</ul>
-</div>
+                
+                <li class="nav-item">
+                    <a class="nav-link" href="/books/upload">Upload New Book</a>
+                </li>
+
+                <li>
+                    <form action="{{ route('logout') }}" method="POST">
+                        @csrf
+                        <button type="submit">Logout</button>
+                    </form>
+                </li>
+            </ul>
+        </div>
 
     </header>
 

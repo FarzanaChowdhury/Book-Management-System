@@ -51,7 +51,7 @@
         @foreach($books as $book)
         <div class="col-md-4 mb-4"style="width: 100%, max-height: 10rem">
             <div class="card shadow-lg p-3" >
-                <x-card href="/books/{{$book['name']}}">
+                <x-card href="/books/{{$book['id']}}">
                     <img src="{{ asset('storage/' . $book->cover_image) }}" class="card-img-top img-fluid mt-4 mb-4" style="height: 25rem; width: 75%; object-fit: cover; margin:auto" alt="...">
                     <h5 class="card-title m-auto"><strong>{{ $book['name'] }}</strong></h5>
 <p class='m-auto'> {{$book['author']}}</p>
@@ -67,7 +67,7 @@
         
     </div>
 
-<div class="pagination-container" style="height: 10px">
+<div class="pagination-container m-4 d-flex justify-content-center">
     {{$books->links()}}
 </div>
 

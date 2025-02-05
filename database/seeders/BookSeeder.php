@@ -17,7 +17,7 @@ class BookSeeder extends Seeder
     {
 
 // Delete all existing records from the books table
-\App\Models\Book::truncate();
+//  \App\Models\Book::truncate();
 
 Storage::makeDirectory('public/cover_images');
 

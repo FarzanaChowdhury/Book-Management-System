@@ -59,7 +59,7 @@ class BookFactory extends Factory
     
         // Return the definition array for seeding
         return [
-            'name' => fake()->word(),
+            'name' => fake()->text(5),
             'author' => fake()->name(),
             'category' => fake()->randomElement(['Comedy', 'Adventure', 'Educational', 'Romance', 'Sci-fi', 'Thriller', 'Fantasy']),
             'cover_image' => $coverImagePath, // Store relative path in database

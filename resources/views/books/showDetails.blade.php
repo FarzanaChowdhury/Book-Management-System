@@ -36,4 +36,20 @@
             </div>
         </div>
     </div>
+
+<div class="mt-4 d-flex flex-row-reverse">
+
+  <form action="{{ route('books.destroy', $book->id) }}" method="POST">
+    @csrf
+    @method('DELETE')
+
+    <button type="submit" class="btn btn-danger my-4">Delete Book</button>
+  </form>
+<div class="mt-4 mr-2">
+  <a href="{{ route('books.edit', $book->id) }}" class="btn btn-success">Edit Book</a>
+</div>
+</div>
+
+
+
 </x-layout>
