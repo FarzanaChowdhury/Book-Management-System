@@ -5,8 +5,6 @@ use App\Http\Controllers\BookController;
 use Illuminate\Support\Facades\Auth;
 
 
-
-
 Route::get('/', function () {
     return view('welcome');
 });
@@ -17,7 +15,7 @@ Route::get('/dbconn', function () {
 
 Route::get('/books', [BookController::class, 'index'])->name('books.index');
 Route::get('/books/upload', [BookController::class, 'create'])->name('books.upload');
-Route::get('/books/{id}', [BookController::class, 'show'])->name('books.show');
+Route::get('/books/{name}', [BookController::class, 'show'])->name('books.show');
 Route::post('/books', [BookController::class, 'store'])->name('books.store');
 Route::get('/books/{id}/edit', [BookController::class, 'edit'])->name('books.edit');
 Route::put('/books/{id}', [BookController::class, 'update'])->name('books.update');
