@@ -33,6 +33,9 @@
       id="author" 
       class="form-control"
       name="author" 
+        value="{{ Auth::user()->name }}"  
+  readonly   
+ 
       required
     >
 

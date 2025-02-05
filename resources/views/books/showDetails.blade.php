@@ -11,7 +11,7 @@
 
 
 <x-layout>
-    <div class="container mt-5" >
+    <div class="container mt-5">
         <div class="card shadow">
             <div class="card-body d-flex" style="padding: 2rem; background-color: #f0f1fa">
                 <div>
@@ -37,18 +37,25 @@
         </div>
     </div>
 
-<div class="mt-4 d-flex flex-row-reverse">
+    <div class="mt-4 d-flex flex-row-reverse">
+        @if(in_array(Auth::user()->role, ['admin', 'super admin']) || Auth::user()->name === $book->author)
 
-  <form action="{{ route('books.destroy', $book->id) }}" method="POST">
-    @csrf
-    @method('DELETE')
+        <form action="{{ route('books.destroy', $book->id) }}" method="POST">
+            @csrf
+            @method('DELETE')
 
-    <button type="submit" class="btn btn-danger my-4">Delete Book</button>
-  </form>
-<div class="mt-4 mr-2">
-  <a href="{{ route('books.edit', $book->id) }}" class="btn btn-success">Edit Book</a>
-</div>
-</div>
+            <button type="submit" class="btn btn-danger my-4">Delete Book</button>
+        </form>
+
+        <div class="mt-4 mr-2">
+            <a href="{{ route('books.edit', $book->id) }}" class="btn btn-success">Edit Book</a>
+        </div>
+        @endif
+
+
+
+
+    </div>
 
 
 

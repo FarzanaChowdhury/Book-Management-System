@@ -27,10 +27,17 @@ class LoginController extends Controller
         ]);
 
         if (Auth::attempt($credentials)) {
-            return redirect()->intended('/home');
+            return redirect()->intended('/books');
         }
 
         return back()->withErrors(['email' => 'Invalid credentials.']);
+    }
+
+
+    protected function authenticated(Request $request, $user)
+    {
+        // Redirect to /books after successful login
+        return redirect()->route('/books');
     }
 
     /**
