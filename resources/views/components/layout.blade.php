@@ -38,14 +38,35 @@
 </head>
 <body>
     <header class="bg-dark text-white p-3">
-        <nav class="container d-flex justify-content-between">
+        {{-- <nav class="container d-flex justify-content-between">
             <h1>Book Management</h1>
             <div>
                 <a href="/books" class="btn btn-light me-2">All Books</a>
                 <a href="/books/upload" class="btn btn-primary">Upload New Book</a>
+
             </div>
-        </nav>
+        </nav> --}}
+<div class="container d-flex justify-content-between">
+<h1>Book Management</h1>
+<ul class="nav justify-content-end">
+  <li class="nav-item">
+    <a class="nav-link active" href="/books">All Books</a>
+  </li>
+  <li class="nav-item">
+    <a class="nav-link" href="/books/upload">Upload New Book</a>
+  </li>
+
+</ul>
+</div>
+
     </header>
+
+
+
+
+
+
+
 
     <main class="container mt-4">
         {{ $slot }}

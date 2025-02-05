@@ -1,55 +1,76 @@
+
 <x-layout>
+<head>
+<style>
+        .pagination .page-link svg {
+            width: 1.2rem;
+            height: 1.2rem;
+        }
 
+        .pagination .page-link:hover svg {
+            width: 1.5rem;
+            height: 1px;
+        }
 
+        .pagination .page-link svg path {
+            fill: #333;
+        }
+    </style>
+</head>
 
-    <h1>find info</h1>
     <h2>List of all books: </h2>
-    <button>Filter</button>
-    <input type="text"><button class='search'>Search</button>
+ 
 
-<div class="row g-4">
-@foreach($books as $book)
-<div class="col-md-4 mb-4">
-<div class="card shadow-lg p-3" style="width: 100%">
-    <x-card href="/books/{{$book['name']}}">
-    <img src='{{$book['cover_image']}}' class="card-img-top" alt="...">
-          <h5 class="card-title">{{ $book['name'] }}</h5>
+<form action="{{ route('books.index') }}" method="GET">
+    <!-- Search Bar -->
+    <input type="text" name="search" placeholder="Search books..." value="{{ request('search') }}">
+    
+    <!-- Author Dropdown -->
+    <select name="author">
+        <option value="">All Authors</option>
+        @foreach ($authors as $author)
+            <option value="{{ $author }}" {{ request('author') == $author ? 'selected' : '' }}>{{ $author }}</option>
+        @endforeach
+    </select>
 
-        </x-card>
-    </li>
+    <!-- Category Dropdown -->
+    <select name="category">
+        <option value="">All Categories</option>
+        @foreach ($categories as $category)
+            <option value="{{ $category }}" {{ request('category') == $category ? 'selected' : '' }}>{{ $category }}</option>
+        @endforeach
+    </select>
 
+    <button type="submit" class="btn btn-primary">Filter</button>
+</form>
+
+
+
+
+    <div class="row g-4">
+        @foreach($books as $book)
+        <div class="col-md-4 mb-4"style="width: 100%, max-height: 10rem">
+            <div class="card shadow-lg p-3" >
+                <x-card href="/books/{{$book['name']}}">
+                    <img src="{{ asset('storage/' . $book->cover_image) }}" class="card-img-top img-fluid mt-4 mb-4" style="height: 25rem; width: 75%; object-fit: cover; margin:auto" alt="...">
+                    <h5 class="card-title m-auto"><strong>{{ $book['name'] }}</strong></h5>
+<p class='m-auto'> {{$book['author']}}</p>
+
+                </x-card>
+
+                </li>
+
+            </div>
+        </div>
+        @endforeach
+
+        
     </div>
-    </div>
-@endforeach
+
+<div class="pagination-container" style="height: 10px">
+    {{$books->links()}}
 </div>
 
-{{-- 
-<form action="{{ route('books.index') }}" method="GET">
-    <select name="author">
-        <option value="">Select Author</option>
-        @foreach($authors as $author)
-            <option value="{{ $author }}" {{ request('author') == $author ? 'selected' : '' }}>
-                {{ $author }}
-            </option>
-        @endforeach
-    </select>
-
-    <select name="category">
-        <option value="">Select Category</option>
-        @foreach($categories as $category)
-            <option value="{{ $category }}" {{ request('category') == $category ? 'selected' : '' }}>
-                {{ $category }}
-            </option>
-        @endforeach
-    </select>
-
-    <button type="submit">Filter</button>
-</form>
- --}}
-
-
-
-
- {{$books->links()}}
+    
 
 </x-layout>

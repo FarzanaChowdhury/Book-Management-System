@@ -1,7 +1,7 @@
 <x-layout>
 
 <h2>Upload a New Book</h2>
-  <form action="" method="" class="form-control shadow p-3 mb-5 bg-white rounded">
+  <form action="{{ route("books.store")}}" method="POST" class="form-control shadow p-3 mb-5 bg-white rounded" enctype="multipart/form-data">
     <!-- CSRF token for security -->
     @csrf
 
@@ -43,6 +43,7 @@
 <select id="category" class="form-control" name="category" required>
     <option value="" disabled selected>Select a Category</option>
     <option value="Adventure">Adventure</option>
+    <option value="Fantasy">Fantasy</option>
     <option value="Romance">Romance</option>
     <option value="Comedy">Comedy</option>
     <option value="Horror">Horror</option>
