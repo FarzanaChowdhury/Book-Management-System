@@ -10,7 +10,7 @@ Technologies used: PHP, Laravel Sail, Docker, MySQL, PhpMyAdmin, Bootstrap
 
 -> git clone https://github.com/FarzanaChowdhury/Book-Management-System.git
 
--> cd Book-Management-System
+-> cd book-management
 
 -> cp .env.example .env
 
