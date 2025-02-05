@@ -26,7 +26,9 @@ Technologies used: PHP, Laravel Sail, Docker, MySQL, PhpMyAdmin, Bootstrap
 
 
 ### Additional Instructions
--Access it from: http://localhost:8080
+-Access the application from : http://localhost/login
+
+-Access Database from: http://localhost:8080
 
 -PhpMyAdmin username: root Password: root
 
